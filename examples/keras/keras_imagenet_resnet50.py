@@ -57,7 +57,7 @@ hvd.init()
 config = tf.compat.v1.ConfigProto()
 config.gpu_options.allow_growth = True
 config.gpu_options.visible_device_list = str(hvd.local_rank())
-K.set_session(tf.Session(config=config))
+K.set_session(tf.compat.v1.Session(config=config))
 
 # If set > 0, will resume training from a given checkpoint.
 resume_from_epoch = 0
