@@ -82,19 +82,19 @@ resume_from_epoch = hvd.broadcast(resume_from_epoch, 0, name='resume_from_epoch'
 verbose = 1 if hvd.rank() == 0 else 0
 
 # Training data iterator.
-# train_gen = image.ImageDataGenerator(
-#    width_shift_range=0.33, height_shift_range=0.33, zoom_range=0.5, horizontal_flip=True,
-#    preprocessing_function =tf.keras.applications.resnet50.preprocess_input)
-# train_iter = train_gen.flow_from_directory(args.train_dir,
-#                                           batch_size=args.batch_size,
-#                                           target_size=(224, 224))
+train_gen = image.ImageDataGenerator(
+    width_shift_range=0.33, height_shift_range=0.33, zoom_range=0.5, horizontal_flip=True,
+    preprocessing_function =tf.keras.applications.resnet50.preprocess_input)
+train_iter = train_gen.flow_from_directory(args.train_dir,
+                                          batch_size=args.batch_size,
+                                          target_size=(224, 224))
 
 # Validation data iterator.
-# test_gen = image.ImageDataGenerator(
-#    zoom_range=(0.875, 0.875), preprocessing_function =tf.keras.applications.resnet50.preprocess_input)
-# test_iter = test_gen.flow_from_directory(args.val_dir,
-#                                         batch_size=args.val_batch_size,
-#                                         target_size=(224, 224))
+test_gen = image.ImageDataGenerator(
+    zoom_range=(0.875, 0.875), preprocessing_function =tf.keras.applications.resnet50.preprocess_input)
+test_iter = test_gen.flow_from_directory(args.val_dir,
+                                         batch_size=args.val_batch_size,
+                                         target_size=(224, 224))
 
 # Set up standard ResNet-50 model.
 model = tf.keras.applications.resnet50.ResNet50(weights=None)
