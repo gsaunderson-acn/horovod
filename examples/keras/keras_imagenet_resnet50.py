@@ -30,9 +30,9 @@ import os
 
 parser = argparse.ArgumentParser(description='Keras ImageNet Example',
                                  formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-parser.add_argument('--train-dir', default=os.path.expanduser('~/Classification_ResNet50/imagenet/train'),
+parser.add_argument('--train-dir', default=os.path.expanduser('./imagenet/train'),
                     help='path to training data')
-parser.add_argument('--val-dir', default=os.path.expanduser('~/Classification_ResNet50/imagenet/validation'),
+parser.add_argument('--val-dir', default=os.path.expanduser('./imagenet/validation'),
                     help='path to validation data')
 parser.add_argument('--log-dir', default='./logs',
                     help='tensorboard log directory')
