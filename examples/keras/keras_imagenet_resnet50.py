@@ -15,6 +15,7 @@ import argparse
 import tensorflow as tf
 from tensorflow.keras.preprocessing import image
 import tensorflow.keras
+from tensorflow.keras.applications import resnet50
 from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input
 import numpy as np
 from keras import layers
