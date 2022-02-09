@@ -84,20 +84,20 @@ verbose = 1 if hvd.rank() == 0 else 0
 # Training data iterator.
 train_gen = image.ImageDataGenerator(
     width_shift_range=0.33, height_shift_range=0.33, zoom_range=0.5, horizontal_flip=True,
-    preprocessing_function=keras.applications.resnet50.preprocess_input)
+    preprocessing_function =tf.keras.applications.resnet50.preprocess_input)
 train_iter = train_gen.flow_from_directory(args.train_dir,
                                            batch_size=args.batch_size,
                                            target_size=(224, 224))
 
 # Validation data iterator.
 test_gen = image.ImageDataGenerator(
-    zoom_range=(0.875, 0.875), preprocessing_function=keras.applications.resnet50.preprocess_input)
+    zoom_range=(0.875, 0.875), preprocessing_function =tf.keras.applications.resnet50.preprocess_input)
 test_iter = test_gen.flow_from_directory(args.val_dir,
                                          batch_size=args.val_batch_size,
                                          target_size=(224, 224))
 
 # Set up standard ResNet-50 model.
-model = keras.applications.resnet50.ResNet50(weights=None)
+model = tf.keras.applications.resnet50.ResNet50(weights=None)
 
 # Horovod: (optional) compression algorithm.
 compression = hvd.Compression.fp16 if args.fp16_allreduce else hvd.Compression.none
