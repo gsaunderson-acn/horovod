@@ -13,6 +13,7 @@
 #
 import argparse
 import tensorflow as tf
+from tensorflow.keras import preprocessing
 from tensorflow.keras.preprocessing import image
 import tensorflow.keras
 from tensorflow.keras.applications import resnet50
