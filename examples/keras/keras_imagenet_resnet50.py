@@ -170,7 +170,7 @@ if hvd.rank() == 0:
 # 3 / N batches of validation data on every worker, where N is the number of workers.
 # Over-sampling of validation data helps to increase probability that every validation
 # example will be evaluated.
-model.fit_generator(train_iter,
+model.fit(train_iter,
                     steps_per_epoch=len(train_iter) // hvd.size(),
                     callbacks=callbacks,
                     epochs=args.epochs,
