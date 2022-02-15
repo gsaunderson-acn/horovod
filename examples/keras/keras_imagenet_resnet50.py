@@ -123,7 +123,7 @@ else:
             layer_config['config']['epsilon'] = 1e-5
 
     model = keras.models.Model.from_config(model_config)
-    opt = tf.keras.optimizers.SGD(lr=initial_lr, momentum=args.momentum)
+    opt = tf.keras.optimizers.SGD(learning_rate=initial_lr, momentum=args.momentum)
 
     # Horovod: add Horovod Distributed Optimizer.
     opt = hvd.DistributedOptimizer(opt, compression=compression)
